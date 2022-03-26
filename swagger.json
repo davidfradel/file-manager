@@ -1,0 +1,58 @@
+
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "file-manager", 
+      "description": "file-manager API",
+      "version": "1.0.0", 
+      "contact": {
+        "name": "David Fradel", 
+        "email": "david.fradel@gmail.com"
+      }
+    },
+    "servers": [
+        {
+          "url": "http://localhost:3000",
+          "description": "Local server"
+        }
+    ],
+      "paths":{
+        "/external-file-sources/{bucket}":{
+            "get": {
+                "tags": ["External"],
+                "description": "Copy an external data",
+                "operationId": "getExternalData",
+                "parameters": [
+                    {
+                        "name": "bucket",
+                        "in": "path",
+                        "required": true,
+                        "description": "bucket name"
+                    },
+                    {
+                      "name": "path",
+                      "in": "query",
+                      "required": true,
+                      "description": "file path"
+                  }
+                ]
+            }
+        },
+        "/buckets/:bucket":{
+          "get": {
+              "tags": ["Internal"],
+              "description": "List data in local bucket",
+              "operationId": "ListInternalData",
+              "parameters": [
+                  {
+                      "name": "bucket",
+                      "in": "path",
+                      "required": true,
+                      "description": "bucket name"
+                  }
+              ]
+          }
+      }
+    }
+}
+  
